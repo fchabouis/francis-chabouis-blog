@@ -172,7 +172,8 @@ The final line of logs confirms that everything has been cleaned nicely with a r
 ## Try it yourself 🎮
 With the magic of the `mix_install` macro, all this code can be run in a single file. It will create the database, create the table, the Ecto schema, stream some data from the data.gouv.fr API and stream it into the database :rocket:. The only prerequesite is to have a **running postgres service** and that you fill your **credentials** to access it (line 13).
 
-The best way to play with the code is probably to copy paste it in a [Livebook](https://github.com/livebook-dev/livebook/) and launch it.
+If you have a livebook instance running locally, just click here to launch the code!
+[![Run in Livebook](https://livebook.dev/badge/v1/pink.svg)](https://livebook.dev/run?url=https%3A%2F%2Fgist.githubusercontent.com%2Ffchabouis%2F5fefa1ad8835e93238e585fa5cf7efb4%2Fraw%2Fe1ce00586b17e9f17e0b1a3589f0718871c86063%2Fgistfile1.txt)
 
 Have fun!
 
