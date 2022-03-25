@@ -46,7 +46,7 @@ No need to talk again about Ecto's [streaming capabilities](https://hexdocs.pm/e
 
 1. Install the dependencies
 
-```
+```elixir
 def deps do
   [
     {:unzip, "~> x.x.x"},
