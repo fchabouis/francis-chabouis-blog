@@ -42,7 +42,7 @@ style-src 'self' 'nonce-xyz';
 ```
 
 When the browser receives such a response, it keeps only the inlined CSS matching the Nonce specified in the CSP headers, as it shows that the CSS code
- is genuine and has not been injected by someone else.
+ is genuine and has not been injected by someone else. More info [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src#unsafe_inline_styles).
 
  ## Phoenix LiveDashboard
  Now that we know what we want to achieve, here is how to do it.
