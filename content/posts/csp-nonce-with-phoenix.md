@@ -136,4 +136,38 @@ live_dashboard("/phoenix-dashboard",csp_nonce_assign_key: :csp_nonce_value)
 
 ![phoenix LiveDashboard with CSS](/dashboard_with_css.png)
 
+### Edit
+Following a question in the comments, if you want to use a different nonce for style, script and images, you need to make the following changes:
+
+In the Plug code, create 3 assigns containing the 3 different values.
+```elixir
+  def call(conn, _opts) do
+    # a random string is generated
+    nonce_1 = generate_nonce()
+    nonce_2 = generate_nonce()
+    nonce_3 = generate_nonce()
+
+    csp_headers = csp_headers(Application.fetch_env!(:my_app, :app_env), nonce_1, nonce_2, nonce_3)
+
+    conn
+    # the nonce is saved in the connection assigns
+    |> Plug.Conn.assign(:img_src_nonce, nonce_1)
+    |> Plug.Conn.assign(:img_style_nonce, nonce_2)
+    |> Plug.Conn.assign(:img_script_nonce, nonce_3)
+    |> Phoenix.Controller.put_secure_browser_headers(csp_headers)
+  end
+```
+
+In the router file, you pass the name of those assigns as options, not the nonce value itself
+```elixir
+live_dashboard("/phoenix-dashboard",
+  metrics: Transport.PhoenixDashboardTelemetry,
+  csp_nonce_assign_key: %{
+    img: :img_src_nonce,
+    style: :img_style_nonce,
+    script: :img_script_nonce,
+  })
+```
+
+The doc is not very clear about what you should pass, but it says you need pass a `%{optional(:img) => atom(), optional(:script) => atom(), optional(:style) => atom()}`. It expects an `atom`, not a string!
 🎉
