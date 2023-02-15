@@ -136,6 +136,9 @@ live_dashboard("/phoenix-dashboard",csp_nonce_assign_key: :csp_nonce_value)
 
 ![phoenix LiveDashboard with CSS](/dashboard_with_css.png)
 
+
+🎉
+
 ### Edit
 Following a question in the comments, if you want to use a different nonce for style, script and images, you need to make the following changes:
 
@@ -158,7 +161,7 @@ In the Plug code, create 3 assigns containing the 3 different values.
   end
 ```
 
-In the router file, you pass the name of those assigns as options, not the nonce value itself
+In the router file, you pass the name of those assigns as options, not the nonce value itself.
 ```elixir
 live_dashboard("/phoenix-dashboard",
   metrics: Transport.PhoenixDashboardTelemetry,
@@ -170,4 +173,3 @@ live_dashboard("/phoenix-dashboard",
 ```
 
 The doc is not very clear about what you should pass, but it says you need pass a `%{optional(:img) => atom(), optional(:script) => atom(), optional(:style) => atom()}`. It expects an `atom`, not a string!
-🎉
